@@ -1,0 +1,98 @@
+﻿@using Umbiliko.Web.Constants
+@using Umbiliko.Web.Contracts
+@{
+    ViewBag.Title = "Umbiliko Dashboard - You are authenticated!";
+    ViewBag.Page = "dashboard";
+    var user = new UserData(Context.User);
+    var level = user.AccessLevel;
+}
+<h2>Dashboard</h2>
+<section class="container-fluid panel">
+    <div class="container">
+        @if (level.HasFlag(AccessLevels.Protected))
+        {
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <dl class="col-xs-12">
+                                <dt class="col-xs-6">User Name</dt>
+                                <dd class="col-xs-6">@user.Name</dd>
+                            </dl>
+                            <dl class="col-xs-12">
+                                <dt class="col-xs-6">Email</dt>
+                                <dd class="col-xs-6">@user.Email</dd>
+                            </dl>
+                            <dl class="col-xs-12">
+                                <dt class="col-xs-6">Given Name</dt>
+                                <dd class="col-xs-6">@user.GivenName</dd>
+                            </dl>
+                            <dl class="col-xs-12">
+                                <dt class="col-xs-6">Family Name</dt>
+                                <dd class="col-xs-6">@user.Surname</dd>
+                            </dl>
+                            <dl class="col-xs-12">
+                                <dt class="col-xs-6">Date of Birth</dt>
+                                <dd class="col-xs-6">@user.DateOfBirth</dd>
+                            </dl>
+                            <dl class="col-xs-12">
+                                <dt class="col-xs-6">Gender</dt>
+                                <dd class="col-xs-6">@user.Gender</dd>
+                            </dl>
+                            <dl class="col-xs-12">
+                                <dt class="col-xs-6">Mobile Phone</dt>
+                                <dd class="col-xs-6">@user.MobilePhone</dd>
+                            </dl>
+                            <dl class="col-xs-12">
+                                <dt class="col-xs-6">Home Phone</dt>
+                                <dd class="col-xs-6">@user.HomePhone</dd>
+                            </dl>
+                            <dl class="col-xs-12">
+                                <dt class="col-xs-6">Other Phone</dt>
+                                <dd class="col-xs-6">@user.OtherPhone</dd>
+                            </dl>
+                            <dl class="col-xs-12">
+                                <dt class="col-xs-6">Street Address</dt>
+                                <dd class="col-xs-6">@user.StreetAddress</dd>
+                            </dl>
+                            <dl class="col-xs-12">
+                                <dt class="col-xs-6">Postal Code</dt>
+                                <dd class="col-xs-6">@user.PostalCode</dd>
+                            </dl>
+                            <dl class="col-xs-12">
+                                <dt class="col-xs-6">State or Province</dt>
+                                <dd class="col-xs-6">@user.StateOrProvince</dd>
+                            </dl>
+                            <dl class="col-xs-12">
+                                <dt class="col-xs-6">Country</dt>
+                                <dd class="col-xs-6">@user.Country</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            @if (level.HasFlag(AccessLevels.Private))
+                            {
+                                <dl class="col-xs-12">
+                                    <dt class="col-xs-6">Company Code</dt>
+                                    <dd class="col-xs-6">@user.CompanyCode</dd>
+                                </dl>
+                                <dl class="col-xs-12">
+                                    <dt class="col-xs-6">Company Name</dt>
+                                    <dd class="col-xs-6">@user.CompanyName</dd>
+                                </dl>
+                                <dl class="col-xs-12">
+                                    <dt class="col-xs-6">Member Since</dt>
+                                    <dd class="col-xs-6"></dd>
+                                </dl>
+                            }
+                            @Html.Partial("_Accounts", user)
+                        </div>
+                    </div>
+                    @*@Html.Partial("_Logins", user)*@
+                </div>
+            </div>
+        }
+    </div>
+</section>
+<footer class="container-fluid hidden-xs text-center">
+    Umbiliko @DateTime.Today.Year
+</footer>

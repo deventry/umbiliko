@@ -1,7 +1,19 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
-}
+    ViewBag.Title = "Umbiliko Demo";
+    ViewBag.Page = "home";
 
+    var returnUrl = "dashboard";
+    var widgetUri = "https://umbiliko.com/authentication/my-account/enter?returnUrl=" + returnUrl;
+}
+<header class="home-header">
+    <div class="container">
+        <div class="brand">
+            @*<h1><img src="content/images/umbiliko.svg" onerror="this.onerror=null; this.src='umbiliko.png'" title="Umbiliko" /></h1>*@
+        </div>
+        <div class="umbiliko-enter-placeholder" data-return="@returnUrl" data-widget="@widgetUri">
+        </div>
+    </div>
+</header>
 <div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>

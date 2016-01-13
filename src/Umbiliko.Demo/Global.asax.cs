@@ -12,6 +12,7 @@ namespace Umbiliko.Demo
     {
         protected void Application_Start()
         {
+            DependencyConfig.RegisterServices();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
